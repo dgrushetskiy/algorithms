@@ -40,17 +40,17 @@ public class TinkoffTestAlgorithmExample {
      */
     private static int calculateDeposit(int days) {
         int daysOfTheWeek = 7;
-        int shekelResult = 0;
+        int depositResult = 0;
         if (days >= 1 && days <= 1000) {
             int numberOfWeeks = days / daysOfTheWeek;
             int[][] calendarBoard = getCalendarBoard(daysOfTheWeek, numberOfWeeks, days);
             for (int i = 0; i < calendarBoard.length; i++) {
                 for (int j = 0; j < calendarBoard[i].length; j++) {
-                    shekelResult = shekelResult + calendarBoard[i][j];
+                    depositResult = depositResult + calendarBoard[i][j];
                 }
             }
         }
-        return shekelResult;
+        return depositResult;
     }
 
     /**
@@ -79,13 +79,13 @@ public class TinkoffTestAlgorithmExample {
                     calendarBoard[i][j] = count;
                     count++;
                 }
-                if (i == level && level <= heightResult && level > 0 && restDaysWeekResult == 0) {
+                if (i == level && level > 0 && restDaysWeekResult == 0) {
                     calendarBoard[i][j] = calendarBoard[i - 1][j] + 1;
                 }
-                if (i == level && level <= heightResult && level > 0 && restDaysWeekResult > 0) {
+                if (i == level && level > 0 && restDaysWeekResult > 0) {
                     calendarBoard[i][j] = calendarBoard[i - 1][j] + 1;
                 }
-                if (i == level && level == heightResult - 1 && restDaysWeekResult > 0) {
+                if (i == level && level == heightResult - 1 && level > 0 && restDaysWeekResult > 0) {
                     calendarBoard[i][j] = calendarBoard[i - 1][j] + 1;
                     if (j + 1 == restDaysWeekResult) {
                         break;

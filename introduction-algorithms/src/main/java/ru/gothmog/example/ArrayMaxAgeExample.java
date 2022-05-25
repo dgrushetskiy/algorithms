@@ -12,6 +12,9 @@ public class ArrayMaxAgeExample {
 
         int maxAgeIsSortFor = calculateMaxAgeForSort(ages);
         System.out.println(MAX_AGE + maxAgeIsSortFor);
+
+        int maxAgeIsSortForUp = calculateMaxAgeForSortUp(ages);
+        System.out.println(MAX_AGE + maxAgeIsSortFor + " " + maxAgeIsSortForUp);
         int ageMom = 45;
         int ageDad = 52;
 
@@ -42,6 +45,22 @@ public class ArrayMaxAgeExample {
             }
         }
         return maxAge;
+    }
+
+    private static int calculateMaxAgeForSortUp(int[] arrays) {
+        int maxAge1 = 0;
+        int maxAge2 = 0;
+        if (arrays.length != 0) {
+            for (int i = 0; i < arrays.length; i++) {
+                maxAge1 = max(maxAge1, arrays[i]);
+            }
+            for (int i = 0; i < arrays.length; i++) {
+                if (arrays[i] < maxAge1) {
+                    maxAge2 = max(maxAge2, arrays[i]);
+                }
+            }
+        }
+        return maxAge2;
     }
 
     private static int max(int a, int b) {
